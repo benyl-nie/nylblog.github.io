@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>搭建hexo网站踩坑点 | benyl&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前提: 安装了node 和 git一  安装 hexo脚手架1$ npm install hexo -g 会出现以下信息：1）1234567891011Error: EACCES: permission denied, access &apos;/usr/local/lib/node_modules&apos;npm ERR!  &amp;#123; Error: EACCES: permission denied, acc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建hexo网站踩坑点">
+<meta property="og:url" content="http://yoursite.com/2019/02/14/搭建hexo网站踩坑点/index.html">
+<meta property="og:site_name" content="benyl&#39;s Blog">
+<meta property="og:description" content="前提: 安装了node 和 git一  安装 hexo脚手架1$ npm install hexo -g 会出现以下信息：1）1234567891011Error: EACCES: permission denied, access &apos;/usr/local/lib/node_modules&apos;npm ERR!  &amp;#123; Error: EACCES: permission denied, acc">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-14T08:39:31.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建hexo网站踩坑点">
+<meta name="twitter:description" content="前提: 安装了node 和 git一  安装 hexo脚手架1$ npm install hexo -g 会出现以下信息：1）1234567891011Error: EACCES: permission denied, access &apos;/usr/local/lib/node_modules&apos;npm ERR!  &amp;#123; Error: EACCES: permission denied, acc">
+  
+    <link rel="alternate" href="/atom.xml" title="benyl&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">benyl&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-搭建hexo网站踩坑点" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/14/搭建hexo网站踩坑点/" class="article-date">
+  <time datetime="2019-02-14T07:54:15.000Z" itemprop="datePublished">2019-02-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      搭建hexo网站踩坑点
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前提-安装了node-和-git"><a href="#前提-安装了node-和-git" class="headerlink" title="前提: 安装了node 和 git"></a>前提: 安装了node 和 git</h2><h3 id="一-安装-hexo脚手架"><a href="#一-安装-hexo脚手架" class="headerlink" title="一  安装 hexo脚手架"></a>一  安装 hexo脚手架</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br></pre></td></tr></table></figure>
+<h4 id="会出现以下信息："><a href="#会出现以下信息：" class="headerlink" title="会出现以下信息："></a>会出现以下信息：</h4><h5 id="1）"><a href="#1）" class="headerlink" title="1）"></a>1）</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Error: EACCES: permission denied, access <span class="string">'/usr/local/lib/node_modules'</span></span><br><span class="line">npm ERR!  &#123; Error: EACCES: permission denied, access <span class="string">'/usr/local/lib/node_modules'</span></span><br><span class="line">npm ERR!   stack: <span class="string">'Error: EACCES: permission denied, access \'</span>/usr/<span class="built_in">local</span>/lib/node_modules\<span class="string">''</span>,</span><br><span class="line">npm ERR!   errno: -13,</span><br><span class="line">npm ERR!   code: <span class="string">'EACCES'</span>,</span><br><span class="line">npm ERR!   syscall: <span class="string">'access'</span>,</span><br><span class="line">npm ERR!   path: <span class="string">'/usr/local/lib/node_modules'</span> &#125;</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! Please try running this <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line">npm ERR! A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>:</span><br><span class="line">npm ERR!     /Users/nieyuling/.npm/_logs/2019-02-14T07_10_39_923Z-debug.log</span><br></pre></td></tr></table></figure>
+<h4 id="原因：-permission-denied-mac电脑没有权限，-需加-sudo-将安装命令改为"><a href="#原因：-permission-denied-mac电脑没有权限，-需加-sudo-将安装命令改为" class="headerlink" title="原因： permission denied, mac电脑没有权限， 需加 sudo, 将安装命令改为"></a>原因： permission denied, mac电脑没有权限， 需加 sudo, 将安装命令改为</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo -g</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="2"><a href="#2" class="headerlink" title="2)"></a>2)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Error: EACCES: permission denied, mkdir <span class="string">'/usr/local/lib/node_modules/hexo-cli/node_modules/fsevents/build'</span></span><br><span class="line">gyp ERR! System Darwin 18.2.0</span><br><span class="line">gyp ERR! <span class="built_in">command</span> <span class="string">"/usr/local/bin/node"</span> <span class="string">"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"</span> <span class="string">"configure"</span> <span class="string">"--fallback-to-build"</span> <span class="string">"--module=/usr/local/lib/node_modules/hexo-cli/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node"</span> <span class="string">"--module_name=fse"</span> <span class="string">"--module_path=/usr/local/lib/node_modules/hexo-cli/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64"</span> <span class="string">"--napi_version=3"</span> <span class="string">"--node_abi_napi=napi"</span></span><br><span class="line">gyp ERR! cwd /usr/<span class="built_in">local</span>/lib/node_modules/hexo-cli/node_modules/fsevents</span><br><span class="line">gyp ERR! node -v v8.11.3</span><br><span class="line">gyp ERR! node-gyp -v v3.6.2</span><br><span class="line">gyp ERR! not ok</span><br><span class="line">node-pre-gyp ERR! build error</span><br></pre></td></tr></table></figure>
+<h4 id="原因：-permission-denied，-同样是没有权限"><a href="#原因：-permission-denied，-同样是没有权限" class="headerlink" title="原因： permission denied， 同样是没有权限"></a>原因： permission denied， 同样是没有权限</h4><h4 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h4><p>可用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R <span class="variable">$USER</span> /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
+<p>扩大权限，再重新执行一次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br></pre></td></tr></table></figure></p>
+<p>即可</p>
+<hr>
+<h3 id="二：安装成功以后"><a href="#二：安装成功以后" class="headerlink" title="二：安装成功以后"></a>二：安装成功以后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folderName&gt;</span><br><span class="line"> //执行时，此folder中会装入很多hexo配置文件和主题文件，文件目录应为一个子文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt; <span class="comment">#进入到hexo的文件中</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo install // 安装依赖包</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">$ hexo server <span class="comment">#启动服务，默认在http://localhost:4000</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/14/搭建hexo网站踩坑点/" data-id="cjs4bwyx40001y96okpzofwip" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/14/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/14/搭建hexo网站踩坑点/">搭建hexo网站踩坑点</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/14/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yuling Nie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
