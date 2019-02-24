@@ -5,15 +5,19 @@
   
 
   
-  <title>benyl&#39;s Blog</title>
+  <title>实现一个柯里化函数 | benyl&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="benyl&#39;s Blog">
-<meta property="og:url" content="http://www.benyl.cn/index.html">
+  <meta name="description" content="实现一个柯里化函数定义·   currying又称部分求值。一个currying的函数首先会接受一些参数，接受了这些参数之后，该函数并不会立即求值，而是继续返回另外一个函数，刚才传入的参数在函数形成的闭包中被保存起来。待到函数被真正需要求值的时候，之前传入的所有参数都会被一次性用于求值。   简单来说，也即：将使用多个参数的函数转换成一系列使用一个参数的函数的技术。从而达到函数只运行一次的效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现一个柯里化函数">
+<meta property="og:url" content="http://www.benyl.cn/2019/02/24/实现一个柯里化函数/index.html">
 <meta property="og:site_name" content="benyl&#39;s Blog">
+<meta property="og:description" content="实现一个柯里化函数定义·   currying又称部分求值。一个currying的函数首先会接受一些参数，接受了这些参数之后，该函数并不会立即求值，而是继续返回另外一个函数，刚才传入的参数在函数形成的闭包中被保存起来。待到函数被真正需要求值的时候，之前传入的所有参数都会被一次性用于求值。   简单来说，也即：将使用多个参数的函数转换成一系列使用一个参数的函数的技术。从而达到函数只运行一次的效果。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-24T10:32:19.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="benyl&#39;s Blog">
+<meta name="twitter:title" content="实现一个柯里化函数">
+<meta name="twitter:description" content="实现一个柯里化函数定义·   currying又称部分求值。一个currying的函数首先会接受一些参数，接受了这些参数之后，该函数并不会立即求值，而是继续返回另外一个函数，刚才传入的参数在函数形成的闭包中被保存起来。待到函数被真正需要求值的时候，之前传入的所有参数都会被一次性用于求值。   简单来说，也即：将使用多个参数的函数转换成一系列使用一个参数的函数的技术。从而达到函数只运行一次的效果。">
   
     <link rel="alternate" href="/atom.xml" title="benyl&#39;s Blog" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-实现一个柯里化函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-实现一个柯里化函数" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/24/实现一个柯里化函数/" class="article-date">
   <time datetime="2019-02-24T10:18:12.000Z" itemprop="datePublished">2019-02-24</time>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/24/实现一个柯里化函数/">实现一个柯里化函数</a>
+    <h1 class="article-title" itemprop="name">
+      实现一个柯里化函数
     </h1>
   
 
@@ -101,16 +103,19 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/14/搭建hexo网站踩坑点/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">搭建hexo网站踩坑点</div>
+    </a>
+  
+</nav>
 
   
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
+</article>
 
 </section>
         
