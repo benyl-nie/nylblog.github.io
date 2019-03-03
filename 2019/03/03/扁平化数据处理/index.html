@@ -7,17 +7,17 @@
   
   <title>扁平化数据处理 | benyl&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="扁平化嵌套列表迭代器给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出:">
+  <meta name="description" content="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出: [1,4,6]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扁平化数据处理">
 <meta property="og:url" content="http://www.benyl.cn/2019/03/03/扁平化数据处理/index.html">
 <meta property="og:site_name" content="benyl&#39;s Blog">
-<meta property="og:description" content="扁平化嵌套列表迭代器给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出:">
+<meta property="og:description" content="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出: [1,4,6]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T14:05:02.663Z">
+<meta property="og:updated_time" content="2019-03-03T14:07:36.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扁平化数据处理">
-<meta name="twitter:description" content="扁平化嵌套列表迭代器给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出:">
+<meta name="twitter:description" content="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。示例一输入: [[1,1],2,[1,1]] 输出: [1,1,2,1,1] 解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。 示例二： 输入: [1,[4,[6]]]  输出: [1,4,6]">
   
     <link rel="alternate" href="/atom.xml" title="benyl&#39;s Blog" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="扁平化嵌套列表迭代器"><a href="#扁平化嵌套列表迭代器" class="headerlink" title="扁平化嵌套列表迭代器"></a>扁平化嵌套列表迭代器</h2><h4 id="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。"><a href="#给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。" class="headerlink" title="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。"></a>给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。</h4><h5 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h5><p>输入: [[1,1],2,[1,1]]</p>
+        <h4 id="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。"><a href="#给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。" class="headerlink" title="给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。"></a>给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。列表中的项或者为一个整数，或者是另一个列表。</h4><h5 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h5><p>输入: [[1,1],2,[1,1]]</p>
 <p>输出: [1,1,2,1,1]</p>
 <p>解释: 通过重复调用 next 直到 hasNext 返回false，next 返回的元素的顺序应该是:[1,1,2,1,1]。</p>
 <h4 id="示例二："><a href="#示例二：" class="headerlink" title="示例二："></a>示例二：</h4><p> 输入: [1,[4,[6]]]</p>
