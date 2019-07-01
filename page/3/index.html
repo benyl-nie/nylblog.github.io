@@ -260,11 +260,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-20190403-git-错误操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-看javascript技巧有感" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/04/04/20190403-git-错误操作/" class="article-date">
-      <time datetime="2019-04-04T02:38:55.000Z" itemprop="datePublished">2019-04-04</time>
+      <a href="/2019/06/21/看javascript技巧有感/" class="article-date">
+      <time datetime="2019-06-21T08:23:36.000Z" itemprop="datePublished">2019-06-21</time>
 </a>
 
 
@@ -279,7 +279,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/04/20190403-git-错误操作/">20190403 git 错误操作</a>
+      <a class="article-title" href="/2019/06/21/看javascript技巧有感/">看javascript技巧有感</a>
     </h1>
   
 
@@ -289,17 +289,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="20190403-git-错误操作"><a href="#20190403-git-错误操作" class="headerlink" title="20190403 git 错误操作"></a>20190403 git 错误操作</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>   当时把所有的业务代码都写完了，看了pr，想优化下分支中的一些文件，就用了以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">git <span class="built_in">log</span> + 文件路径 // 查找到想要会退的commit，例如commit id 为 saasasa</span><br><span class="line">git reset -- hard saasasa</span><br><span class="line">git push -g origin + 本地分支名</span><br></pre></td></tr></table></figure>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>  直接导致远程代码被reset了，后提交的所有commit都不存在，导致代码数据全部都没有了，毁灭，难受，心塞，心慌</p>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reflog show // 查找最近操作的head</span><br><span class="line">git reset + 想要回退的操作的headId</span><br><span class="line">git <span class="built_in">log</span> // 即可看到上一次reset前的<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<p>注释：例如我操作我本地的分支的一个  git reflog show</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fc2310c9 (HEAD -&gt; git/<span class="built_in">test</span>) HEAD@&#123;0&#125;: checkout: moving from feature/optional-settlement to git/<span class="built_in">test</span></span><br><span class="line">26284977 (origin/feature/optional-settlement, feature/optional-settlement) HEAD@&#123;1&#125;: reset: moving to HEAD</span><br><span class="line">26284977 (origin/feature/optional-settlement, feature/optional-settlement) HEAD@&#123;2&#125;: checkout: moving from git/<span class="built_in">test</span> to feature/optional-settlement</span><br><span class="line">fc2310c9 (HEAD -&gt; git/<span class="built_in">test</span>) HEAD@&#123;3&#125;: reset: moving to HEAD@&#123;2&#125;</span><br><span class="line">d730bc53 (origin/git/<span class="built_in">test</span>) HEAD@&#123;4&#125;: reset: moving to HEAD@&#123;0&#125;</span><br><span class="line">d730bc53 (origin/git/<span class="built_in">test</span>) HEAD@&#123;5&#125;: reset: moving to d730bc5333a6f0054227d9476dffb5dc5308f5e8</span><br><span class="line">fc2310c9 (HEAD -&gt; git/<span class="built_in">test</span>) HEAD@&#123;6&#125;: commit: git测试</span><br><span class="line">5d1965a0 (origin/master, origin/HEAD, master) HEAD@&#123;7&#125;: checkout: moving from master to git/<span class="built_in">test</span></span><br><span class="line">5d1965a0 (origin/master, origin/HEAD, master) HEAD@&#123;8&#125;: checkout: moving from qatest to master</span><br><span class="line">83eede1e (origin/qatest, qatest) HEAD@&#123;9&#125;: commit (merge): 合同</span><br><span class="line">ed915fc5 HEAD@&#123;10&#125;: merge feature/remove-branch: Merge made by the <span class="string">'recursive'</span> strategy.</span><br><span class="line">f3d9ba99 HEAD@&#123;11&#125;: merge feature/customer-log: Merge made by the <span class="string">'recursive'</span> strategy.</span><br><span class="line">26284977 (origin/feature/optional-settlement, feature/optional-settlement) HEAD@&#123;12&#125;: merge feature/optional-settlement: Fast-forward</span><br><span class="line">5d1965a0 (origin/master, origin/HEAD, master) HEAD@&#123;13&#125;: checkout: moving from master to qatest</span><br><span class="line">5d1965a0 (origin/master, origin/HEAD, master) HEAD@&#123;14&#125;: checkout: moving from qatest to master</span><br><span class="line">8254f765 HEAD@&#123;15&#125;: reset: moving to HEAD</span><br><span class="line">8254f765 HEAD@&#123;16&#125;: checkout: moving from feature/optional-settlement to qatest</span><br><span class="line">26284977 (origin/feature/optional-settlement, feature/optional-settlement) HEAD@&#123;17&#125;: commit: 删除注</span><br><span class="line">释 &amp; 字段修改</span><br><span class="line">2f3028b0 HEAD@&#123;18&#125;: commit: 选座优化</span><br></pre></td></tr></table></figure>
-<h4 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h4><p>  一、git reset –hard 和  git push -f 和  git pull -f 这些强制性的操作太过于危险，最好不要使用，切勿在公共分支使用</p>
-<p>  二、如果想将某个提交过的文件回退,可以使用如下操作</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> -- 文件路径</span><br><span class="line">git checkout  + commitId + 文件路径</span><br></pre></td></tr></table></figure>
-<p>这样就可以将文件回退<br>然后用 <code>git push</code> 即可</p>
-<p>  三、 对于分支强拉或者强推 ，最好不要使用 <code>-force</code>  ，可以考虑使用 <code>rebase</code> 操作，不会重新生成 commitId, 操作比较柔和</p>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h4 id="这段时间听同时面试校招生，发现自己原生js很弱，需要狂补，以下为看《一个合格的中级前端工程师要掌握的javaScript技巧》有感"><a href="#这段时间听同时面试校招生，发现自己原生js很弱，需要狂补，以下为看《一个合格的中级前端工程师要掌握的javaScript技巧》有感" class="headerlink" title="这段时间听同时面试校招生，发现自己原生js很弱，需要狂补，以下为看《一个合格的中级前端工程师要掌握的javaScript技巧》有感"></a>这段时间听同时面试校招生，发现自己原生js很弱，需要狂补，以下为看<a href="https://mp.weixin.qq.com/s/X6ks8HrhAXvIjkcnZ9qMLw" target="_blank" rel="noopener">《一个合格的中级前端工程师要掌握的javaScript技巧》</a>有感</h4><h5 id="一、判断对象的数据类型"><a href="#一、判断对象的数据类型" class="headerlink" title="一、判断对象的数据类型"></a>一、判断对象的数据类型</h5><p><code>bash
+ const</code></p>
 
       
     </div>
@@ -307,12 +298,12 @@
     <div class="article-info article-info-index">
       
       
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/git/">git</a>
-    </div>
-
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript-Array/">javaScript Array</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -332,7 +323,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
