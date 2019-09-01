@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>时间safari与chrome</title>
+      <link href="/2019/09/01/%E6%97%B6%E9%97%B4safari%E4%B8%8Echrome/"/>
+      <url>/2019/09/01/%E6%97%B6%E9%97%B4safari%E4%B8%8Echrome/</url>
+      
+        <content type="html"><![CDATA[<p>关于时间问题 safari 与 chrome 的兼容处理。</p><a id="more"></a><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote><p>最近所负责的项目遇到这样一个问题，在 safari 浏览器中，从后台拉取的时间值在前端展示为 NaN-NaN,并且这个问题只是在 iPhone 手机中遇到，安卓是好的。</p></blockquote><p>在解决这个问题时，通过 charles 线上 remote 到本地代码 alert 查看，发现在通过本地代码 alert 的时候时间值展示为 NaN,这说明不光线上，本地也可以复现到这个问题</p><h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><p>想到 iphone 与安卓对应的原生浏览器不同，本地用 safari 访问项目时，发现也会出现同样的问题，究其原因，发现：</p><blockquote><p>1、在 js 中处理 Date 时，发现 IE 与 Safari 和其他浏览器的支持方式不一样<br>例如: 2019-09-01 00:00:00<br>在其他浏览器中，使用这个格式的字符串进行 new Date 操作没有问题，但是在 Safari 会提示 Invalid Date<br>Safari 中不支持’-‘ 格式的日期字符串，将其替换成’/‘变成 2019/09/01 00:00:00 即可正常使用<br>2、例如：2019/09/01T00:00:00 此格式字符串在 Safari 中也是得不到支持的，需要将’T’替换成空格，变成 2019/09/01 00:00:00 格式<br>这个问题直接导致 IE 与 Safari 浏览器中不能处理与 Date 相关的程序</p></blockquote><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p><strong>办法一：</strong></p><blockquote><p>进行两个符号的替换即可。’-‘替换成’/‘, ‘T’替换成空格</p></blockquote><blockquote><p>项目中原先存在 moment 包，将原先用 new Date 的方式用 moment().format 的方式引入</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> javascript 兼容 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>es6-promise摘</title>
       <link href="/2019/09/01/es6-promise%E6%91%98/"/>
       <url>/2019/09/01/es6-promise%E6%91%98/</url>
