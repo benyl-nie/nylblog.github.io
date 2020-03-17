@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>samesite</title>
+      <link href="/2020/03/17/samesite/"/>
+      <url>/2020/03/17/samesite/</url>
+      
+        <content type="html"><![CDATA[<p>chorme samesite 特性致使跨域无法种cookie<br><a id="more"></a></p><h3 id="问题简介"><a href="#问题简介" class="headerlink" title="问题简介"></a>问题简介</h3><p>最近有运营同事反馈，外部审核平台接入的内部系统审核界面无法打开，切换成QQ浏览器就好使了，如下：<br><img src="/img/samesite/samesite_01.png" alt="IMAGE"></p><p>发现登陆一直在重定向，一直在login和callback.</p><h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><p>1、询问那位同事的chorme版本，经反馈，chorme版本为80<br>2、打开报错的那个请求，发现单点登陆种入的 cookie没有了，考虑可能登陆发现浏览器没有种入cookie导致一直重定向<br><img src="/img/samesite/samesite_02.png" alt="IMAGE"><br>3、切换到console，看浏览器有无报错信息,发现有个warning<br><img src="/img/samesite/samesite_03.png" alt="IMAGE"><br>4、百度发现正式这个warning导致的问题</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>由于HTTP协议是无状态的，而cookie是可用于向网站添加持久状态的方法之一，但它很不安全，第三方网站发起的请求中会携带cookie，这样很容易造成CSRF 攻击和用户追踪。</p><p>Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击和用户追踪。<br>关于SameSite的了解，可以看这两篇文章<br><a href="http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html" target="_blank" rel="noopener">Cookie 的 SameSite 属性</a><br><a href="https://www.cnblogs.com/ziyunfei/p/5637945.html" target="_blank" rel="noopener">紫云飞的samesite</a></p><p>因为chorme只灰度了一部分的chrome浏览器，所以这个现象只是出现在一部分人的电脑里。<br>对Chrome的安全策略有所了解后，可以明确的知道三方cookie带不过去是SameSite搞的鬼，虽说Chrome51开始cookie加上了SameSite属性，但不是强制执行的，而Chrome80稳定版遍开始陆陆续续的强制使用SameSite。更新内容如下：<br><img src="/img/samesite/samesite_04.png" alt="IMAGE"><br>更细日志请参考：<a href="https://www.chromium.org/updates/same-site" target="_blank" rel="noopener">https://www.chromium.org/updates/same-site</a></p><p>这里不得不吐槽一下万恶的chrome，居然采取了部分用户强制执行的策略。</p><p>当中招的浏览器会走默认的 SameSite=Lax，会导致跨域cookie无法种入；</p><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>发现问题后，首先让运营配置了自己电脑的chrome,如下:<br>1、在谷歌浏览器中输入这个地址 chrome://flags/<br>2、然后 在输入框中搜索 samesite<br>3、有一个选项SameSite by default cookies，将她后面的下拉框选择disabled<br><img src="/img/samesite/samesite_05.png" alt="IMAGE"></p><p>上面的方法比较暴力，并且只能暂时解决几个人的问题，今天看了下代码，可以采用如下解决办法<br>1、升级cookies的版本到0.8或以上，升级依赖 低于0.8以下的cookie的其他包<br>2、因为服务端用的是koa, 项目通过ngix代理将https反向代理成http打到服务器上,可以在koa入口将proxy设置成true,app.proxy=true（Cookie 只能通过 HTTPS 协议发送，否则无效，这里非https配置proxy代理），即req.protocol=https。<br>package中的cookies在判断secure时也采用的是req.protocol来获取协议的。<br><img src="/img/samesite/samesite_06.png" alt="IMAGE"><br>注意： 通过日志可以发现X-Forwarded-Proto 的值是https,X-Forwarded-Proto (XFP) 是一个事实上的标准首部，用来确定客户端与代理服务器或者负载均衡服务器之间的连接所采用的传输协议（HTTP 或 HTTPS）。<br>3、在需要种cookie前将cookie的SameSite配置成none,secure即可，这里因为项目中种cookie的地方是依赖的第三方单点登陆包，只需要将对应包版本升级，并且加入需要的配置</p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h3><p>这只是解决chorme浏览器，但是在上safari因为识别不了samesite,走的是strict模式，所以问题也是同样存在</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> chrome cookies </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>动态菜单获取</title>
       <link href="/2020/01/13/%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E8%8E%B7%E5%8F%96/"/>
       <url>/2020/01/13/%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E8%8E%B7%E5%8F%96/</url>
