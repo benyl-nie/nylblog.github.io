@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>git操作之revert</title>
+      <link href="/2020/04/01/git%E6%93%8D%E4%BD%9C%E4%B9%8Brevert/"/>
+      <url>/2020/04/01/git%E6%93%8D%E4%BD%9C%E4%B9%8Brevert/</url>
+      
+        <content type="html"><![CDATA[<p>git revert 回退版本以及 git resert 与 git resert的区别<br><a id="more"></a></p><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h3><p>最近有个需求，来来会回折腾，前端开发完毕，但后端涉及到的RD太多，交接太麻烦，一个部门的RD对需求开发不理解，导致对接的RD这边有需求有误解，有时候严重需要回退当前需求的分支还原开发前的状态，但是在开发时，公共分支受不同人控制，不能回退自己分支时让其他同事的需求代码受到影响。</p><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a><strong>解决办法</strong></h3><p> git revert </p><p> 如下：<br> 我们需要将test环境的分支的制定commit去除，但是不影响其他commit的提交顺序</p><h4 id="step1-找到需要回退的commit"><a href="#step1-找到需要回退的commit" class="headerlink" title="step1 找到需要回退的commit"></a>step1 找到需要回退的commit</h4><p> <img src="/img/git-revert/git_revert_01.png" alt="IMAGE"></p><p> 如上图，因为这两个commit包含一个merge,这里我们只revert倒数2，3两个commit，</p><h4 id="step2-回退"><a href="#step2-回退" class="headerlink" title="step2 回退"></a>step2 回退</h4><p> <img src="/img/git-revert/git_revert_02.png" alt="IMAGE"></p><h4 id="step3-提交"><a href="#step3-提交" class="headerlink" title="step3 提交"></a>step3 提交</h4><p> <img src="/img/git-revert/git_revert_03.png" alt="IMAGE"></p><h4 id="step4-查看最新log"><a href="#step4-查看最新log" class="headerlink" title="step4 查看最新log"></a>step4 查看最新log</h4><p><img src="/img/git-revert/git_revert_04.png" alt="IMAGE"></p><p>可以看到最新占位的commit已经被revert。</p><h3 id="确认"><a href="#确认" class="headerlink" title="确认"></a>确认</h3><p>如果想要查看自己revert的代码是否自己真正想要回退的，可以diff自己已经revert的commit，如下：<br><img src="/img/git-revert/git_revert_05.png" alt="IMAGE"><br><img src="/img/git-revert/git_revert_06.png" alt="IMAGE"></p><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul><li><p>git reset<br>git reset 也可以实现版本的回退,具体操作不做详细讲解，步骤可以发在下面</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git reset --hard [commitID]</span><br><span class="line">git push -f origin [分支名]</span><br></pre></td></tr></table></figure></li><li><p>git reset 与 git revert 的区别<br>1） git revert用一次新的commit来回滚之前的commit, git reset 直接删除之前的commit<br>2）在回滚这一操作上来看，效果都差不多。但是日后继续merge 之前的老版本时有区别。因为git resert 是用一次逆向的commit “中和”之前的提交，因此日后合并老的分支时，导致这部分改变不会再出现，但是git reset 是之间的某个commit在某个分支上删除，因而当该分支再去和老的分支时，这些被回滚的commit还会被再次引入。<br>3) git reset 是把head向后移动了一下，而git resert 是把head继续向前推进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git revert </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>samesite</title>
       <link href="/2020/03/17/samesite/"/>
       <url>/2020/03/17/samesite/</url>
