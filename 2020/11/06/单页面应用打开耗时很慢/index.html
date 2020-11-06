@@ -1,30 +1,16 @@
-<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>爬楼梯 | 玉玲～</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">爬楼梯</h1><a id="logo" href="/.">玉玲～</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">爬楼梯</h1><div class="post-meta">Jan 13, 2020</div><div class="post-content"><p>斐波拉契数列变形<br><a id="more"></a></p>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
-<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<p><strong>注意：</strong> 给定 n 是一个正整数<br><strong>示例1</strong></p>
-<blockquote>
-<p>输入： 2<br>输出： 2<br>解释： 有两种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶</li>
-<li>2 阶</li>
-</ol>
-</blockquote>
-<p><strong>示例 2：</strong></p>
-<blockquote>
-<p>输入： 3<br>输出： 3<br>解释： 有三种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶 + 1 阶</li>
-<li>1 阶 + 2 阶</li>
-<li>2 阶 + 1 阶</li>
-</ol>
-</blockquote>
-<p><strong>解析</strong></p>
-<blockquote>
-<p>其实这道题目是典型的斐波那契数列问题，在一开始，我是按照解决斐波拉契数列问题的解法适用递归，在整体过测试用例的时候发现用时过长，超出时间限制，并且在执行 n= 46的时候内存益处</p>
-</blockquote>
-<p>后面的时候采用动态规划解法，将前一步的step缓存起来，然后再往下执行，会好很多，代码如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; n</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> climbStairs = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">let</span> stepOne = <span class="number">1</span>, stepTwo = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = stepOne + stepTwo;</span><br><span class="line">        stepOne = stepTwo;</span><br><span class="line">        stepTwo = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stepTwo;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</div><div class="tags"><a href="/tags/算法-javascript/">算法 javascript</a></div><div class="post-nav"><a class="pre" href="/2020/01/13/thrift环境搭建/">thrift环境搭建</a><a class="next" href="/2020/01/13/react-升级问题汇总/">react 升级问题汇总</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC80NTYzNS8yMjE0Ng=="><script>(function(d, s) {
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>单页面应用打开耗时很慢 | 玉玲～</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">单页面应用打开耗时很慢</h1><a id="logo" href="/.">玉玲～</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">单页面应用打开耗时很慢</h1><div class="post-meta">Nov 6, 2020</div><div class="post-content"><p>h5 单页面应用打开耗时很慢<br><a id="more"></a></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><ul>
+<li>最近vue单页面项目越做越大，发现首次加载耗时很慢，已经在一轮优化以后发现有时候耗时依旧很慢，尤其是h5的移动端页面</li>
+</ul>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a><strong>原因</strong></h2><ul>
+<li>移动端单页面应用使用懒加载，懒加载的请求会导致有时候请求过长就自动访问到根结点</li>
+<li>谷歌字体请求耗时过长，查看network有时候会长达10s+</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
+<li>懒加载的页面移除懒加载，在route.js中手动 import</li>
+<li>谷歌字体优化<br>1） 查看请求是哪个urrl ：我的项目中请求谷歌字体的url是<a href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600" target="_blank" rel="noopener"></a><br><img src="/img/google/google-font.png" alt="google-font"><br>2) 然后把response 中的内容下载到本地，然后在main.js中 import 引入，如下<br> <img src="/img/google/google-css.png" alt="google-css"><br>3) 备注:担心谷歌会引入其他地址的字体，这边索性把两个地址的url的response都引入，请求地址如下<br> <a href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" target="_blank" rel="noopener">https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700</a><br> <a href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" target="_blank" rel="noopener">https://fonts.googleapis.com/css?family=Roboto:400,300,500,700</a></li>
+</ul>
+</div><div class="tags"><a href="/tags/vue-单页面应用-请求耗时/">vue 单页面应用 请求耗时</a></div><div class="post-nav"><a class="next" href="/2020/07/26/vue首屏白屏分析解决/">vue首屏白屏分析解决</a></div><div id="lv-container" data-id="city" data-uid="MTAyMC80NTYzNS8yMjE0Ng=="><script>(function(d, s) {
    var j, e = d.getElementsByTagName(s)[0];
    if (typeof LivereTower === 'function') { return; }
    j = d.createElement(s);
